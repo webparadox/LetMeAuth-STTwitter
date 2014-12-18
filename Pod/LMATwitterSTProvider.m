@@ -15,6 +15,7 @@
 
 
 typedef NS_ENUM(NSInteger, LMATwitterSTAuthType) {
+    LMATwitterSTAuthTypeNone,
     LMATwitterSTAuthTypeSafari,
     LMATwitterSTAuthTypeAccountStore
 };
@@ -88,9 +89,7 @@ typedef NS_ENUM(NSInteger, LMATwitterSTAuthType) {
 
         self.twitterAPI = [STTwitterAPI twitterAPIWithOAuthConsumerKey:self.consumerKey consumerSecret:self.consumerSecret];
 
-        if (![accounts count]) {
-            self.type = LMATwitterSTAuthTypeSafari;
-
+        if (error || ![accounts count]) {
             [self.twitterAPI postTokenRequest:^(NSURL *url, NSString *oauthToken) {
                 __strong typeof(weakSelf)self = weakSelf;
 
@@ -99,6 +98,7 @@ typedef NS_ENUM(NSInteger, LMATwitterSTAuthType) {
                     return;
                 }
 
+                self.type = LMATwitterSTAuthTypeSafari;
                 [[UIApplication sharedApplication] openURL:url];
             } oauthCallback:self.callbackURL errorBlock:self.errorBlock];
         } else {
@@ -153,6 +153,9 @@ typedef NS_ENUM(NSInteger, LMATwitterSTAuthType) {
 
 - (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
+    if (self.type != LMATwitterSTAuthTypeSafari) {
+        return NO;
+    }
     if (self.cancelled) {
         [self didCancel];
         return NO;
@@ -182,11 +185,15 @@ typedef NS_ENUM(NSInteger, LMATwitterSTAuthType) {
     return YES;
 }
 
-- (void)handleDidBecomeActive
+- (BOOL)handleDidBecomeActive
 {
-    if (self.type == LMATwitterSTAuthTypeSafari) {
-        [self didCancel];
+    if (self.type != LMATwitterSTAuthTypeSafari) {
+        return NO;
     }
+
+    [self didCancel];
+
+    return YES;
 }
 
 #pragma mark Private methods
