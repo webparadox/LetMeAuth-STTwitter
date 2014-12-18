@@ -14,11 +14,6 @@
 #import "ACAccountStore+GCD.h"
 
 
-NSString *const LMATwitterSTConsumerKey = @"LMATwitterSTConsumerKey";
-NSString *const LMATwitterSTConsumerSecret = @"LMATwitterSTConsumerSecret";
-NSString *const LMATwitterSTCallbackURL = @"LMATwitterSTCallbackURL";
-
-
 typedef NS_ENUM(NSInteger, LMATwitterSTAuthType) {
     LMATwitterSTAuthTypeSafari,
     LMATwitterSTAuthTypeAccountStore

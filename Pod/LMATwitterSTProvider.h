@@ -9,14 +9,7 @@
 
 #import <Foundation/Foundation.h>
 #import <LetMeAuth/LetMeAuth.h>
-
-
-// NSString
-extern NSString *const LMATwitterSTConsumerKey;
-// NSString
-extern NSString *const LMATwitterSTConsumerSecret;
-// NSString
-extern NSString *const LMATwitterSTCallbackURL;
+#import "LMATwitterSTConstants.h"
 
 
 /*
