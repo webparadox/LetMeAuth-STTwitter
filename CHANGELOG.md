@@ -3,6 +3,7 @@
  * Fix authorization in Safari
  * Extract constants
  * Use common constants in API
+ * Use LetMeAuth 2.0
 
 = 1.0.0 (2014.12.13)
 
