@@ -133,9 +133,9 @@ typedef NS_ENUM(NSInteger, LMATwitterSTAuthType) {
 
                         NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithCapacity:4];
 
-                        [dictionary setValue:oAuthToken forKey:@"oauth_token"];
-                        [dictionary setValue:oAuthTokenSecret forKey:@"oauth_token_secret"];
-                        [dictionary setValue:userID forKey:@"user_id"];
+                        [dictionary setValue:oAuthToken forKey:LMAOAuth1Token];
+                        [dictionary setValue:oAuthTokenSecret forKey:LMAOAuth1TokenSecret];
+                        [dictionary setValue:userID forKey:LMAUserId];
                         [dictionary setValue:screenName forKey:@"screen_name"];
 
                         [self didAuthenticateWithData:dictionary];
@@ -174,9 +174,9 @@ typedef NS_ENUM(NSInteger, LMATwitterSTAuthType) {
 
         NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithCapacity:4];
 
-        [dictionary setValue:oAuthToken forKey:@"oauth_token"];
-        [dictionary setValue:oAuthTokenSecret forKey:@"oauth_token_secret"];
-        [dictionary setValue:userID forKey:@"user_id"];
+        [dictionary setValue:oAuthToken forKey:LMAOAuth1Token];
+        [dictionary setValue:oAuthTokenSecret forKey:LMAOAuth1TokenSecret];
+        [dictionary setValue:userID forKey:LMAUserId];
         [dictionary setValue:screenName forKey:@"screen_name"];
 
         [self didAuthenticateWithData:dictionary];
