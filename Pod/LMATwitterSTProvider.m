@@ -161,7 +161,7 @@ typedef NS_ENUM(NSInteger, LMATwitterSTAuthType) {
         return NO;
     }
 
-    if (!url || ![[url absoluteString] hasPrefix:self.callbackURL]) {
+    if (![[[url absoluteString] lowercaseString] hasPrefix:[self.callbackURL lowercaseString]]) {
         return NO;
     }
 
